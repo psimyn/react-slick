@@ -298,7 +298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var dots;
 
-	    if (this.props.dots === true && this.state.slideCount > this.props.slidesToShow) {
+	    if (this.props.dots === true && this.state.slideCount >= this.props.slidesToShow) {
 	      var dotProps = {
 	        dotsClass: this.props.dotsClass,
 	        slideCount: this.state.slideCount,
