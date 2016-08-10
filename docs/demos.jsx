@@ -3,9 +3,9 @@
 import React from 'react';
 import Slider from '../src/slider';
 
-var baseUrl = '';
+var baseUrl = '/img/react-slick';
 if (process.env.NODE_ENV === 'production') {
-  baseUrl = 'http://static.webrafter.com';
+  baseUrl = 'https://s3.amazonaws.com/static.neostack.com/img/react-slick';
 }
 
 var SingleItem = React.createClass({
@@ -40,6 +40,7 @@ var SingleItem = React.createClass({
           <div key={4}><h3>4</h3></div>
           <div key={5}><h3>5</h3></div>
           <div key={6}><h3>6</h3></div>
+          {false? <div key={6}><h3>6</h3></div>: null}
         </Slider>
       </div>
     );
@@ -376,10 +377,10 @@ var LazyLoad = React.createClass({
       <div>
         <h2> Lazy Load</h2>
         <Slider {...settings}>
-          <div><img src={baseUrl + '/img/abstract01.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract02.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract03.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract04.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract01.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract02.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract03.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract04.jpg'} /></div>
         </Slider>
       </div>
     );
@@ -401,10 +402,10 @@ var Fade = React.createClass({
       <div>
         <h2>Fade</h2>
         <Slider {...settings}>
-          <div><img src={baseUrl + '/img/abstract01.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract02.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract03.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract04.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract01.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract02.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract03.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract04.jpg'} /></div>
         </Slider>
       </div>
     );
@@ -434,10 +435,10 @@ var SlickGoTo = React.createClass({
         <h2>Slick Go To</h2>
         <input onChange={this.changeHandler} value={this.state.slickGoTo} type='range' min={0} max={3} />
         <Slider {...settings}>
-          <div><img src={baseUrl + '/img/abstract01.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract02.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract03.jpg'} /></div>
-          <div><img src={baseUrl + '/img/abstract04.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract01.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract02.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract03.jpg'} /></div>
+          <div><img src={baseUrl + '/abstract04.jpg'} /></div>
         </Slider>
       </div>
     );
