@@ -122,6 +122,26 @@ var renderSlides = (spec) => {
 };
 
 export var Track = React.createClass({
+  componentDidUpdate(prevProps, prevState) {
+    React.Children.forEach(this.props.children, (elem, index) => {
+      if (this.props.lazyLoad && this.props.lazyLoadedList.indexOf(index) >= 0) {
+        let loadedImages = 0;
+        const imgs = [...elem.props.children];
+        const updateImages = () => {
+          loadedImages++;
+          if (loadedImages === imgs.length) {
+            this.props.adaptHeight();
+          }
+        }
+
+        imgs.forEach((img) => {
+          const newImg = new Image();
+          newImg.src = img.props.src;
+          newImg.onload = newImg.onerror = updateImages;
+        });
+      }
+    });
+  },
   render: function () {
     var slides = renderSlides(this.props);
     return (
