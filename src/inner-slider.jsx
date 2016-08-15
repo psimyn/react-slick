@@ -75,6 +75,10 @@ export var InnerSlider = React.createClass({
   },
   onWindowResized: function () {
     this.update(this.props);
+    // animating state should be cleared while resizing, otherwise autoplay stops working
+    this.setState({
+      animating: false 
+    })
   },
   render: function () {
     var className = classnames('slick-initialized', 'slick-slider', this.props.className);
@@ -129,11 +133,28 @@ export var InnerSlider = React.createClass({
       nextArrow = (<NextArrow {...arrowProps} />);
     }
 
+    var centerPaddingStyle = null;
+
+    if (this.props.vertical === false) {
+      if (this.props.centerMode === true) {
+        centerPaddingStyle = {
+          padding: ('0px ' + this.props.centerPadding)
+        };
+      }
+    } else {
+      if (this.props.centerMode === true) {
+        centerPaddingStyle = {
+          padding: (this.props.centerPadding + ' 0px')
+        };
+      }
+    }
+
     return (
       <div className={className} onMouseEnter={this.onInnerSliderEnter} onMouseLeave={this.onInnerSliderLeave}>
         <div
           ref='list'
           className="slick-list"
+          style={centerPaddingStyle}
           onMouseDown={this.swipeStart}
           onMouseMove={this.state.dragging ? this.swipeMove: null}
           onMouseUp={this.swipeEnd}
